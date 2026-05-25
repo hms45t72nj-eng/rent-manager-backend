@@ -16,7 +16,23 @@ const lineConfig = {
 const lineClient = new line.messagingApi.MessagingApiClient(lineConfig);
 const OWNER_LINE_USER_ID = process.env.OWNER_LINE_USER_ID;
 
-let properties = [];
+let properties = [let properties = [
+  {
+    id: "prop-1",
+    name: "4A",
+    address: "",
+    rent: 4800,
+    tenant: {
+      name: "黃柏翰",
+      phone: "",
+      lineUserId: null,
+      moveIn: "",
+      leaseEnd: "2027-02-28",
+    },
+    payments: [],
+  },
+];
+];
 let settings = {
   rentReminderDay: 1,
   rentDueDay: 5,
