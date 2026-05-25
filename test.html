@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h2>租賃系統測試</h2>
+<button onclick="send('rent')" style="padding:16px;background:#06C755;color:#fff;border:none;border-radius:10px;font-size:16px;width:100%;margin-bottom:10px">發送收租提醒</button>
+<button onclick="send('lease')" style="padding:16px;background:#ea580c;color:#fff;border:none;border-radius:10px;font-size:16px;width:100%">發送合約到期提醒</button>
+<pre id="r" style="margin-top:20px;padding:16px;background:#f3f4f6;border-radius:10px">點按鈕測試...</pre>
+<script>
+async function send(type){
+  document.getElementById("r").textContent="發送中...";
+  try{
+    const res=await fetch("https://rent-manager-backend-lf8d.onrender.com/api/notify/"+type,{method:"POST",headers:{"Content-Type":"application/json"}});
+    const data=await res.json();
+    document.getElementById("r").textContent=JSON.stringify(data,null,2);
+  }catch(e){document.getElementById("r").textContent="錯誤："+e.message;}
+}
+</script>
+</body>
+</html>
